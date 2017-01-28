@@ -11,7 +11,17 @@
 <body>
     <div id="example"></div>
     <script type="text/babel">
-        ReactDOM.render(<h1>My name is charaka</h1>, document.getElementById('example'));
+        var Bacon = React.createClass({
+            render: function () {
+                return (
+                    <div>
+                        <h3>This is a simple component</h3>
+                        <p>I am some sample text</p>
+                    </div>
+                    );
+            }
+        });
+        ReactDOM.render(<Bacon />, document.getElementById('example'));
     </script>
 
 </body>
