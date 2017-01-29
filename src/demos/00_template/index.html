@@ -12,31 +12,31 @@
 <body>
     <div id="container"></div>
     <script type="text/babel">
-        var Comment = React.createClass({
-            edit : function (){
-                alert("Editing a comment")
+        var Checkbox = React.createClass({
+            getInitialState : function(){
+                return {checked: true}
             },
-            remove : function (){
-                alert("Removing a comment")
+            handleChecked : function(){
+                this.setState({checked: !this.state.checked})
             },
+
             render : function (){
+                var msg;
+                if(this.state.checked){
+                    msg = 'checked'
+                }
+                else{
+                    msg = 'unchecked'
+                }
                 return (
-                    <div className="commentContainer">
-                        <div className="commentText">{this.props.children}</div>
-                        <button onClick={this.edit} className="button-primary">Edit</button>
-                        <button onClick={this.remove} className="button-danger">Remove</button>
+                    <div>
+                        <input type="checkbox" onChange={this.handleChecked} defaultChecked={this.state.checked}/>
+                        <h3>Checkbox is {msg}</h3>
                     </div>
-                )
+                );
             }
         });
-        ReactDOM.render(
-            <div className="board">
-                <Comment>Hey my name is Charaka</Comment>
-                <Comment>Beans</Comment>
-                <Comment>Tuna</Comment>
-            </div>   
-        , document.getElementById('container'));
+        ReactDOM.render(<Checkbox />, document.getElementById('container'));
     </script>
-
 </body>
 </html>
