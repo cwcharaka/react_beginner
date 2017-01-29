@@ -4,30 +4,38 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>React - Template</title>
+    <link rel="stylesheet" href="../../css/main.css" type="text/css">
     <script src="../../js/react.min.js"></script>
     <script src="../../js/react-dom.min.js"></script>
     <script src="../../js/browser.min.js"></script>
 </head>
 <body>
-    <div id="example"></div>
+    <div id="container"></div>
     <script type="text/babel">
-        var Movie = React.createClass({
-            render: function(){
+        var Comment = React.createClass({
+            edit : function (){
+                alert("Editing a comment")
+            },
+            remove : function (){
+                alert("Removing a comment")
+            },
+            render : function (){
                 return (
-                    <div>
-                        <h1>{this.props.title}</h1>
-                        <h2>{this.props.genre}</h2>
+                    <div className="commentContainer">
+                        <div className="commentText">{this.props.children}</div>
+                        <button onClick={this.edit} className="button-primary">Edit</button>
+                        <button onClick={this.remove} className="button-danger">Remove</button>
                     </div>
                 )
             }
         });
         ReactDOM.render(
-                        <div>
-                            <Movie title="Avatar" genre="action" />
-                            <Movie title="Good Will Hunting" genre="drama" />
-                            <Movie title="Note book" genre="romance" />
-                        </div>, 
-                        document.getElementById('example'));
+            <div className="board">
+                <Comment>Hey my name is Charaka</Comment>
+                <Comment>Beans</Comment>
+                <Comment>Tuna</Comment>
+            </div>   
+        , document.getElementById('container'));
     </script>
 
 </body>
